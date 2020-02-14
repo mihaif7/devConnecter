@@ -25,11 +25,13 @@ router.get('/me', auth, async (req, res) => {
             user: req.user.id
         }).populate('user', ['name', 'avatar']);
 
-        if (!proifle) {
+        if (!profile) {
             return res.status(400).json({
                 msg: 'There is no profile for this user!'
             });
         }
+
+        res.json(profile);
 
     } catch (err) {
         console.eror(err.message);
@@ -81,7 +83,7 @@ router.post('/', [auth, [
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
-        profileFields.skills = skills.split(',').map(skill => skill.trim());
+        profileFields.skills = skills.toString().split(',').map(skill => skill.trim());
     }
 
     // Build social object

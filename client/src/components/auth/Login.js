@@ -28,7 +28,7 @@ const Login = ({ login, isAuthenticated }) => {
         <Fragment>
             <h1 className="large text-primary">Sign In</h1>
             <p className="lead">
-                <i className="fas fa-user"></i>
+                <i className="fas fa-user"></i>&nbsp;
                 Sign In Your Account</p>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
